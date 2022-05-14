@@ -1,0 +1,6 @@
+/node_modules
+/node_modules/
+
+olist_order_items_dataset_original.csv
+olist_sellers_dataset_original.csv
+olist_products_dataset_original.csv
