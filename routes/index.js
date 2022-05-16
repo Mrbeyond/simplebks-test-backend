@@ -10,7 +10,8 @@ const router = express.Router();
 
 router.post("/authenticate", Task.authenticate);
 router.get("/order_items", authenticateToken, Task.getOrders);
-router.delete("/order_items?:id", authenticateToken, Task.deleteOrder);
+router.get("/order_items/:id", authenticateToken, Task.getSingleOrder);
+router.delete("/order_items/:id", authenticateToken, Task.deleteOrder);
 router.put("/account", authenticateToken, Task.updateSeller);
 
 

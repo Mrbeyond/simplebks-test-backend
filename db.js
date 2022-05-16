@@ -1,8 +1,11 @@
 import  cstToJson  from "./csvToJSON.js";
 const {csvToJSON} = cstToJson
 import { MongoClient } from "mongodb";
+
 // local connection below not used
 // const uri = 'mongodb://localhost:27017';
+
+// cloud db used with full data inserted.
 const uri = "mongodb+srv://simplebks:dldauA5SxdxnzM9j@cluster0.jrm6k.mongodb.net/application?retryWrites=true&w=majority";
 
 
@@ -29,8 +32,13 @@ const DB=async()=>{
   .then(async(collections)=>{
     // console.log({collections});
 
-    // if no collections
+    // if no collections 
     if(!collections.length){
+
+      // A dummy of 1000 rows for each collection is included in the file if remote 
+      // uri above is not used and on a new database with no collections.
+      // if creation should be forced, the condition above can be removed
+      
       const sellers = await csvToJSON("olist_sellers_dataset.csv");
       const orders = await csvToJSON("olist_order_items_dataset.csv");
       const products = await csvToJSON("olist_products_dataset.csv");
@@ -49,7 +57,7 @@ const DB=async()=>{
   return { database, seller, product, order }
   } catch (error) {      
     console.log({error});
-    process.exit(1)
+    // process.exit(1)
   }
 } 
 

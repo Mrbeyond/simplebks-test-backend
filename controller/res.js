@@ -43,7 +43,7 @@ export function internal(res, message = null) {
 export function notFound(res, msg = null) {
   return res.status(404).json({
     error: true,
-    message: msg ? msg : "Resources not Found",
+    message: msg??"Resources not Found",
   });
 }
 
