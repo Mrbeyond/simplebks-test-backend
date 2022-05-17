@@ -23,3 +23,5 @@ app.use(function (err, req, res, next) {
 server.listen(process.env.PORT || 5000, ()=>{
   console.log("\n Up and running \n")
 })
+
+export default app;
