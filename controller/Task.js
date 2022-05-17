@@ -31,9 +31,9 @@ class Task{
     limit = isNaN(limit)?20:(limit>100?100:(limit<1?20:limit));
     let offset = Number(req.query.offset);
     offset = isNaN(offset)?0:offset;
-    let sort = req.query.sort=="price"? "price":"shipping_limit_date";
-    let dir = req.query.dir;
-    dir = dir?dir:"DESC";
+    let sort = req.query.sort?? "shipping_limit_date"
+    sort = sort.toLowerCase()=="price"? "price":sort;
+    let dir = req.query.dir?? "ASC";
     dir = dir.toUpperCase() == "DESC"? -1: 1;
     return {offset,  limit, sort, dir}
   }
